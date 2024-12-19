@@ -46,3 +46,8 @@ PostgreSQL is the primary database, though MySQL can also be used.
 The `database/repositories` directory houses repositories for the various tables. Repositories are used to abstract the data layer. Directly calling Prisma methods within services can make it difficult to test, swap ORMs, or modify functionality. By using repositories, we provide a consistent interface for services without exposing the underlying data-layer logic.
 
 See [Why it's bad practice to not use repositories with Prisma.](https://www.reddit.com/r/nestjs/comments/1fc6weh/why_is_bad_practice_not_use_repository_with_prisma/?rdt=44896)
+
+## Tests
+Tests can be found in the `test` directory. We mostly work with integration tests but unit tests can also be written. 
+
+There is `Documentator` instance used in the integration tests to help document API endpoints in an OpenAPI spec. The generated documentation can be found at `documentation/api.json`. This JSON data can be used in the [Swagger Editor](https://editor.swagger.io) to display the API documentation.
