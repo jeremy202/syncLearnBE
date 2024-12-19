@@ -9,20 +9,20 @@ Stack:
 - Prisma
 - Redis
 
-This project uses a modular structure, which allows for separating functionalities or parts of the system into distinct modules. For now, there is an auth module. For starters, there is an `auth` module.
+This project uses a modular structure, which allows for separating functionalities or parts of the system into distinct modules. For starters, there is an `auth` module.
 
 Each module contains the following:
 - A `services` directory to store all the services in files
 - A `controller.ts` file to house HTTP controllers that call the services
 - A `validators` directory to store the validator classes (usually there's just one file, `index.ts`, in the `validators` directory),
-- A router that calls the controller methods for the module.
+- A `router.ts` file that defines an Express router that calls the controller methods for the module.
 
 ```
 # Modules Directory Structure
 
 modules-v1/
 ├── auth/ # auth module
-│   ├── services/ #services directory
+│   ├── services/ # services directory
 │   │   ├── getUser.ts
 │   │   ├── login.ts
 │   │   └── register.ts
