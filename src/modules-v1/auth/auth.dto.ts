@@ -1,10 +1,10 @@
 /* eslint-disable max-classes-per-file */
 import { IsNotEmpty, IsOptional, IsString, MinLength } from 'class-validator';
 
-import { IsEmail, IsEmail as IsStrictEmail, TransformToLowerCase } from '../../../lib/validators';
-import { EmailPasswordRequest, UserIdRequest } from '../../../lib/validators/global';
+import { IsEmail, IsEmail as IsStrictEmail, TransformToLowerCase } from '../../lib/validators';
+import { EmailPasswordDto, UserIdDto } from '../../lib/validators/global';
 
-export class RegisterRequest {
+export class RegisterDto {
   @IsStrictEmail()
   @TransformToLowerCase()
   email: string;
@@ -22,10 +22,10 @@ export class RegisterRequest {
   password: string;
 }
 
-export class ProfileRequest extends UserIdRequest {
+export class ProfileDto extends UserIdDto {
 }
 
-export class ProfileUpdateRequest extends UserIdRequest {
+export class ProfileUpdateDto extends UserIdDto {
   @IsString()
   @IsOptional()
   firstName?: string;
@@ -35,7 +35,7 @@ export class ProfileUpdateRequest extends UserIdRequest {
   lastName?: string;
 }
 
-export class VerifyEmailRequest {
+export class VerifyEmailDto {
   @IsEmail()
   @TransformToLowerCase()
   email: string;
@@ -45,4 +45,4 @@ export class VerifyEmailRequest {
   token: string;
 }
 
-export class LoginRequest extends EmailPasswordRequest {}
+export class LoginDto extends EmailPasswordDto {}

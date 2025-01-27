@@ -92,6 +92,34 @@ export function successResponse(result: { message?: string; data: any }) {
   };
 }
 
+/**
+ * Success response
+ * @param data any
+ * @param message string
+ */
+export function sr(data: any, message = 'success') {
+  return {
+    status: 'success',
+    data,
+    message,
+  };
+}
+
+/**
+ * Success response
+ * @param data any
+ * @param pageData PageData
+ * @param message string
+ */
+export function srPaginate(data: any, pageData: PageData, message = 'success') {
+  return {
+    status: 'success',
+    data,
+    pageData,
+    message,
+  };
+}
+
 export function generateRandomCode(length: number) {
   return crypto
     .randomBytes(length * 3)
@@ -181,6 +209,14 @@ export async function decodeToken(token: string): Promise<JwtPayload> {
 
 //   return result.data;
 // }
+
+export interface PageData {
+  total: number;
+  currentPage: number;
+  nextPage: number | null;
+  prevPage: number | null;
+  lastPage: number;
+}
 
 export function calcSkip({ page, limit }: { page: number; limit: number }) {
   return (page - 1) * limit;

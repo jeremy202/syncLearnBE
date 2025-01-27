@@ -12,26 +12,20 @@ Stack:
 This project uses a modular structure, which allows for separating functionalities or parts of the system into distinct modules. For starters, there is an `auth` module.
 
 Each module contains the following:
-- A `services` directory to store all the services in files
-- A `controller.ts` file to house HTTP controllers that call the services
-- A `validators` directory to store the validator classes (usually there's just one file, `index.ts`, in the `validators` directory),
-- A `router.ts` file that defines an Express router that calls the controller methods for the module.
+- A `<module>.service.ts` file that houses the service class which contains services as methods.
+- A `<module>.controller.ts` file to house HTTP controllers that call the services
+- A `<module>.dto.ts` file to store the validator classes
+- A `<<module>.util.ts` to contain module scoped utils
 
 ```
 # Modules Directory Structure
 
 modules-v1/
 ├── auth/ # auth module
-│   ├── services/ # services directory
-│   │   ├── getUser.ts
-│   │   ├── login.ts
-│   │   └── register.ts
-│   ├── validators/ # validators for the services
-│   │   └── index.ts
-│   ├── utils/ # module-perculiar utilities
-│   │   └── index.ts
-│   ├── controller.ts
-│   └── router.ts
+│   ├── auth.service.ts
+│   ├── auth.controller.ts
+│   └── auth.dto.ts
+│   └── auth.util.ts
 ```
 
 Each module corresponds to a subdivision or sub-route of the API. E.g `modules-v1/auth` corresponds to the `/v1/auth/` route.
