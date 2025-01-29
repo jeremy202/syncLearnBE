@@ -1,7 +1,7 @@
+import { ServerResponse } from 'http';
 import { ClassConstructor } from 'class-transformer';
 import { RequestHandler, Response, Router } from 'express';
 import { PageData, wrapServiceAction } from '../utils';
-import { ServerResponse } from 'http';
 
 interface Route {
   method: 'get' | 'post' | 'put' | 'patch' | 'delete';
