@@ -8,8 +8,10 @@ import { TokenFlag } from '../../database/enum';
 import redis from '../../database/redis';
 import config from '../../config';
 import { UserIdDto } from '../../lib/validators/global';
+import { ValidateDto } from '../../lib/core/httpSetup';
 
 export default class AuthService {
+  @ValidateDto(LoginDto)
   static async login(dto: LoginDto) {
     const user = await UserRepo.getUserByEmail(dto.email);
 
@@ -32,6 +34,7 @@ export default class AuthService {
     };
   }
 
+  @ValidateDto(RegisterDto)
   static async register(dto: RegisterDto) {
     const existingUserWithEmail = await UserRepo.getUserByEmail(dto.email);
     if (existingUserWithEmail) {
@@ -61,6 +64,7 @@ export default class AuthService {
     };
   }
 
+  @ValidateDto(VerifyEmailDto)
   static async verifyEmail(dto: VerifyEmailDto) {
     const user = await UserRepo.getUserByEmail(dto.email);
     if (!user) {
@@ -90,6 +94,7 @@ export default class AuthService {
     };
   }
 
+  @ValidateDto(ProfileUpdateDto)
   static async updateProfile(dto: ProfileUpdateDto) {
     let user = await UserRepo.getUserById(dto.userId);
 
@@ -105,6 +110,7 @@ export default class AuthService {
     return omit(user, UserRepo.sensitiveData);
   }
 
+  @ValidateDto(UserIdDto)
   static async getUser(dto: UserIdDto) {
     const user = await UserRepo.getUserById(dto.userId);
 

@@ -1,5 +1,5 @@
 import crypto from 'crypto';
-import * as bcrypt from 'bcrypt';
+import * as bcrypt from 'bcryptjs';
 import * as jwt from 'jsonwebtoken';
 import { ClassConstructor, plainToInstance } from 'class-transformer';
 import { validate, ValidationError as CValidationError, ValidatorOptions } from 'class-validator';

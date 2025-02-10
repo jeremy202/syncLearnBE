@@ -1,6 +1,6 @@
 import Redis, { Cluster } from 'ioredis';
 import config from '../config';
-import generalLogger from '../lib/logger';
+import { generalLogger } from '../lib/logger';
 
 const { password, username, host, port, tls } = config.redis;
 

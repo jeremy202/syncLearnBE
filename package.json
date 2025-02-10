@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "cross-env APP_ENV=local nodemon ./src/server.ts",
     "build": "rimraf ./build && tsc && cp -R src/lib/mail build/src/lib",
-    "test": "NODE_ENV=test APP_ENV=test mocha -r ts-node/register",
+    "test": "cross-env NODE_ENV=test APP_ENV=test mocha -r ts-node/register",
     "prettier": "prettier --ignore-path .gitignore --write .",
     "lint": "eslint . --ext .ts --fix",
     "generate": "prisma generate",
@@ -25,6 +25,7 @@
     "@supercharge/request-ip": "^1.1.2",
     "@types/multer": "^1.4.7",
     "bcrypt": "^5.0.0",
+    "bcryptjs": "^2.4.3",
     "bullmq": "^1.40.1",
     "camelcase-keys": "^7.0.0",
     "class-transformer": "^0.4.0",
@@ -59,6 +60,7 @@
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
+    "@types/bcryptjs": "^2.4.6",
     "@types/chai": "^4.2.21",
     "@types/cookie-parser": "^1.4.3",
     "@types/cors": "^2.8.12",
