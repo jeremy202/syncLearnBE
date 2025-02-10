@@ -16,7 +16,7 @@ sinon.stub(_, 'random').returns(12345);
 // eslint-disable-next-line import/prefer-default-export
 export const mochaHooks = {
   async beforeAll(): Promise<void> {
-    execSync(`DATABASE_URL=${process.env.TEST_DATABASE_URL} yarn migrate:prod`);
+    execSync(`yarn crossenv DATABASE_URL=${process.env.TEST_DATABASE_URL} yarn migrate:prod`);
     await initialize();
     Documentator.start(definition);
     // await seedSomething();
