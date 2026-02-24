@@ -3,13 +3,13 @@ import { IsInt, IsOptional, IsString, IsUUID, Max, Min, MinLength } from 'class-
 import { Type } from 'class-transformer';
 import { TransformToLowerCase, IsEmail as IsStrictEmail } from '.';
 
-export class EmailRequest {
+export class EmailDto {
   @IsStrictEmail()
   @TransformToLowerCase()
   email: string;
 }
 
-export class EmailPasswordRequest {
+export class EmailPasswordDto {
   @IsStrictEmail()
   @TransformToLowerCase()
   email: string;
@@ -21,17 +21,17 @@ export class EmailPasswordRequest {
   password: string;
 }
 
-export class UserIdRequest {
+export class UserIdDto {
   @IsUUID()
   userId: string;
 }
 
-export class LevelIdRequest {
+export class LevelIdDto {
   @IsUUID()
   levelId: string;
 }
 
-export class PaginationRequest {
+export class PaginationDto {
   @IsOptional()
   @Type(() => Number)
   @IsInt()
@@ -45,44 +45,44 @@ export class PaginationRequest {
   limit = 20;
 }
 
-export class LevelPaginationRequest extends PaginationRequest {
+export class LevelPaginationDto extends PaginationDto {
   @IsUUID()
   levelId: string;
 }
 
-export class StudentIdRequest {
+export class StudentIdDto {
   @IsUUID()
   studentId: string;
 }
 
-export class IdRequest {
+export class IdDto {
   @IsUUID()
   id: string;
 }
 
-export class IdWithUserIdRequest extends UserIdRequest {
+export class IdWithUserIdDto extends UserIdDto {
   @IsUUID()
   id: string;
 }
 
-export class SchoolSessionRequest {
+export class SchoolSessionDto {
   @IsUUID()
   sessionId: string;
 }
 
-export class OrganizationWithUserIdRequest extends UserIdRequest {
+export class OrganizationWithUserIdDto extends UserIdDto {
   @IsUUID()
   organizationId: string;
 }
 
-export class OrganizationRequest {
+export class OrganizationDto {
   @IsUUID()
   organizationId: string;
 }
 
-export class OrganizationWithIdRequest extends IdRequest {
+export class OrganizationWithIdDto extends IdDto {
   @IsUUID()
   organizationId: string;
 }
 
-export class EmptyRequest {}
+export class EmptyDto {}
